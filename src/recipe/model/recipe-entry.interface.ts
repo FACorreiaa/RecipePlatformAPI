@@ -20,7 +20,7 @@ export interface RecipeEntry {
 
   // Ingredients
   ingr?: string[];
-  macros?: MacroEntity[];
+  macros?: MacroEntry[];
   totalWeight?: string;
   dietLabels?: string[];
   protein?: string;
