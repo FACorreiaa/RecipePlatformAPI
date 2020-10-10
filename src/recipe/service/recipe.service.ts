@@ -100,14 +100,13 @@ export class RecipeService {
     return await this.recipeRepository.save(recipe);
   }*/
   
-  createComment(id:number, text: string):Observable<RecipeEntry> {
+  createComment(id:number, text: string):Observable<CommentsEntry> {
     return from(this.findOne(id)).pipe(
       switchMap((recipe: RecipeEntry) => {
         const comment = new CommentsEntity();
         comment.comment = text;
-        return from(this.commentsService.create(recipe, comment)).pipe(
-          switchMap((comment: CommentsEntry) => from(this.findOne(id)))
-        )
+        return from(this.commentsService.create(recipe, comment));
+        
       }      
     ))
   }
